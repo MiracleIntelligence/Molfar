@@ -1,0 +1,14 @@
+.vs/
+Applications/Molfar.Android/bin/
+Applications/Molfar.Android/obj/
+Applications/Molfar.Console/bin/
+Applications/Molfar.Console/obj/
+Applications/Molfar.iOS/obj/
+Applications/Molfar.UWP/bin/
+Applications/Molfar.UWP/obj/
+Applications/Molfar/obj/
+Core/Molfar.Core/bin/
+Core/Molfar.Core/obj/
+Core/Molfar.Models/obj/
+Core/Molfar.Models/bin/
+Applications/Molfar/bin/

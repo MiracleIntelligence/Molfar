@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Molfar"
+             BackgroundColor="Black"
+             x:Class="Molfar.MainPage">
+    <Grid Margin="5" BackgroundColor="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <ScrollView IsClippedToBounds="True"
+                    x:Name="ScrollViewMain">
+            <Label Text="Welcome to Xamarin.Forms!" 
+                   BackgroundColor="Black"
+                   TextColor="Green"
+                   FontSize="Medium"
+           x:Name="LabelConsole"
+           VerticalOptions="StartAndExpand" 
+           HorizontalOptions="Fill"
+                   HorizontalTextAlignment="Start"/>
+        </ScrollView>
+        <Entry Grid.Row="1" BackgroundColor="Black" 
+               PlaceholderColor="LightBlue"
+               TextColor="Yellow" 
+               x:Name="EntryCommand" 
+               Placeholder="write your command..." 
+               HorizontalOptions="Fill" Completed="CommandEntryCompleted"/>
+
+    </Grid>
+
+</ContentPage>
