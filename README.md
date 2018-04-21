@@ -1,0 +1,2 @@
+# Molfar
+Console app constructor.
