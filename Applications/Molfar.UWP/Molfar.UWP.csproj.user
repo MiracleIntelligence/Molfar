@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Source>C:\dev\MI\Projects\Molfar\Applications\Resources\molfar.logo.png</Source>
+    <SmallTileSource>C:\dev\MI\Projects\Molfar\Applications\Resources\molfar.logo.png</SmallTileSource>
+    <MediumTileSource>C:\dev\MI\Projects\Molfar\Applications\Resources\molfar.logo.png</MediumTileSource>
+    <WideTileSource>C:\dev\MI\Projects\Molfar\Applications\Resources\molfar.logo.png</WideTileSource>
+    <LargeTileSource>C:\dev\MI\Projects\Molfar\Applications\Resources\molfar.logo.png</LargeTileSource>
+    <AppIconSource>C:\dev\MI\Projects\Molfar\Applications\Resources\molfar.logo.png</AppIconSource>
+    <SplashScreenSource>C:\dev\MI\Projects\Molfar\Applications\Resources\molfar.logo.png</SplashScreenSource>
+    <PackageLogoSource>C:\dev\MI\Projects\Molfar\Applications\Resources\molfar.logo.png</PackageLogoSource>
+  </PropertyGroup>
+</Project>
