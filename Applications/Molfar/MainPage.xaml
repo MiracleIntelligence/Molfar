@@ -11,16 +11,19 @@
         </Grid.RowDefinitions>
         <ScrollView IsClippedToBounds="True"
                     x:Name="ScrollViewMain">
-            <Label Text="Welcome to Xamarin.Forms!" 
+            <Label Text="Molfar" 
+                   Grid.Row="0"
                    BackgroundColor="Black"
                    TextColor="Green"
                    FontSize="Medium"
-           x:Name="LabelConsole"
-           VerticalOptions="StartAndExpand" 
-           HorizontalOptions="Fill"
+                   x:Name="LabelConsole"
+                   VerticalOptions="StartAndExpand" 
+                   HorizontalOptions="Fill"
+                   Margin="0,10"
                    HorizontalTextAlignment="Start"/>
         </ScrollView>
-        <Entry Grid.Row="1" BackgroundColor="Black" 
+        <Entry Grid.Row="1" 
+               BackgroundColor="Black" 
                PlaceholderColor="LightBlue"
                TextColor="Yellow" 
                x:Name="EntryCommand" 

@@ -12,7 +12,7 @@ namespace Molfar.Core.Processors
 
         public override Task<MolfarAnswer> ExcecuteCommand(string message)
         {
-            return Task.FromResult(new MolfarAnswer("Hello!"));
+            return Task.FromResult(new MolfarAnswer($"UNKNOWN COMMAND: {message}"));
         }
     }
 }

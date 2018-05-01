@@ -2,6 +2,7 @@
 using Molfar.Console.Services;
 using Molfar.Core.Services;
 using Molfar.Models.Services;
+using Molfar.Notes;
 using SimpleInjector;
 using System.Text;
 namespace Molfar.Console
@@ -20,8 +21,9 @@ namespace Molfar.Console
 
             _molfar = new Core.Molfar();
             _molfar.Answered += OnMolfarAnswered;
-            _molfar.Initialize(container);
 
+            _molfar.Initialize(container);
+            _molfar.Install<MolfarNotesInstaller>();
 
             while (_molfar.Active)
             {

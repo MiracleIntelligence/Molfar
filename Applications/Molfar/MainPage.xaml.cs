@@ -1,8 +1,10 @@
 ﻿using Molfar.Core.Services;
 using Molfar.Models.Services;
+using Molfar.Notes;
 using SimpleInjector;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Molfar
@@ -23,30 +25,32 @@ namespace Molfar
 
             _molfar = new Core.Molfar();
             _molfar.Answered += MolfarAnswered;
+
             _molfar.Initialize(container);
+            _molfar.Install<MolfarNotesInstaller>();
         }
 
-        private void MolfarAnswered(object sender, Core.Models.MolfarAnswer e)
+        private async void MolfarAnswered(object sender, Core.Models.MolfarAnswer e)
         {
-            AddToConsole(e.Message);
+            await AddToConsole(e.Message);
         }
 
-        public void CommandEntryCompleted(object sender, EventArgs e)
+        public async void CommandEntryCompleted(object sender, EventArgs e)
         {
             var newText = EntryCommand.Text;
             EntryCommand.Text = String.Empty;
-            AddToConsole(newText);
+            await AddToConsole(newText);
             _molfar.SendMessage(newText);
 
         }
 
-        private void AddToConsole(string message)
+        private async Task AddToConsole(string message)
         {
             _sbConsole.AppendLine(message);
             LabelConsole.Text = _sbConsole.ToString();
 
-
-            ScrollViewMain.ScrollToAsync(0, ScrollViewMain.Height, true);
+            await Task.Delay(50);
+            await ScrollViewMain.ScrollToAsync(0, ScrollViewMain.Height, true);
         }
 
     }

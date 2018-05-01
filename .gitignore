@@ -12,3 +12,5 @@ Core/Molfar.Core/obj/
 Core/Molfar.Models/obj/
 Core/Molfar.Models/bin/
 Applications/Molfar/bin/
+*.dll
+*.pdb

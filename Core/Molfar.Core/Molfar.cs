@@ -25,8 +25,6 @@ namespace Molfar.Core
 
         #region
         private Dictionary<string, Type> _knownCommands = new Dictionary<string, Type>();
-        ISettingsService _settingsService;
-        DatabaseService _databaseService;
         #endregion
 
         Container _defaultContainer;
@@ -37,11 +35,6 @@ namespace Molfar.Core
             Install<CoreInstaller>();
 
             SendAnswer(ANS_INIT);
-
-            _settingsService = _defaultContainer.GetInstance<ISettingsService>();
-            _databaseService = _defaultContainer.GetInstance<DatabaseService>();
-
-
         }
 
         public void Install<T>() where T : MolfarModuleInstaller
@@ -66,63 +59,83 @@ namespace Molfar.Core
 
         private async void ProcessMessage(string message)
         {
+            if (String.IsNullOrEmpty(message))
+            {
+                return;
+            }
+
             var nodes = message.Split(' ');
 
             Type commandProcessorType;
 
-            if (nodes.Length > 0)
+            try
             {
-                var commandNode = nodes[0];
-
-                if (commandNode == CMD_PREFIX + CMD_LIST)
+                if (nodes.Length > 0)
                 {
-                    foreach (var item in _knownCommands)
+                    var commandNode = nodes[0];
+
+                    if (commandNode == CMD_PREFIX + CMD_LIST)
                     {
-                        SendAnswer($".{item.Key}");
+                        ShowListOfCommands();
+                        return;
+                    }
+
+                    if (IsRunCommand(commandNode))
+                    {
+                        var settingsService = _defaultContainer.GetInstance<ISettingsService>();
+                        message = settingsService.GetSetting(commandNode.Substring(2));
+                        ProcessMessage(message);
+
+                        return;
+                    }
+
+                    string commandKey;
+
+                    if (IsCommand(commandNode))
+                    {
+                        commandKey = commandNode.Substring(1);
+                    }
+                    else
+                    {
+                        commandKey = CoreInstaller.CMD_ANY_KEY;
+                    }
+
+                    if (_knownCommands.ContainsKey(commandKey))
+                    {
+                        commandProcessorType = _knownCommands[commandKey];
+                    }
+                    else
+                    {
+                        commandProcessorType = _knownCommands[CoreInstaller.CMD_ANY_KEY];
+                    }
+
+
+                    var processor = _defaultContainer.GetInstance(commandProcessorType) as MolfarCommandProcessor;
+
+                    if (processor.CanExcecute(message))
+                    {
+                        var answer = await processor.ExcecuteCommand(message);
+                        SendAnswer(answer);
+                    }
+                    else
+                    {
+                        SendAnswer("unknown command");
                     }
                 }
-
-                if (IsRunCommand(commandNode))
-                {
-                    message = _settingsService.GetSetting(commandNode);
-                    ProcessMessage(message);
-
-                    return;
-                }
-
-                string commandKey;
-
-                if (IsCommand(commandNode))
-                {
-                    commandKey = commandNode.Substring(1);
-                }
-                else
-                {
-                    commandKey = CoreInstaller.CMD_ANY_KEY;
-                }
-
-                if (_knownCommands.ContainsKey(commandKey))
-                {
-                    commandProcessorType = _knownCommands[commandKey];
-                }
-                else
-                {
-                    commandProcessorType = _knownCommands[CoreInstaller.CMD_ANY_KEY];
-                }
-
-
-                var processor = _defaultContainer.GetInstance(commandProcessorType) as MolfarCommandProcessor;
-
-                if (processor.CanExcecute(message))
-                {
-                    var answer = await processor.ExcecuteCommand(message);
-                    SendAnswer(answer);
-                }
-                else
-                {
-                    SendAnswer("unknown command");
-                }
             }
+            catch (Exception ex)
+            {
+                SendAnswer($"ERROR: {ex.Message}");
+            }
+        }
+
+        private void ShowListOfCommands()
+        {
+            foreach (var item in _knownCommands)
+            {
+                SendAnswer($".{item.Key}");
+            }
+            return;
         }
 
         private bool IsCommand(string str)

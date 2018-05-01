@@ -21,7 +21,7 @@ namespace Molfar.Core.Services
             try
             {
                 string dbPath = Path.Combine(
-           Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
            DB_PATH);
 
 

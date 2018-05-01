@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Molfar.Core\Molfar.Core.csproj" />
+    <ProjectReference Include="..\..\Modules\Molfar.Notes\Molfar.Notes.csproj" />
   </ItemGroup>
 
   <ItemGroup>
