@@ -1,0 +1,12 @@
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\bin\Debug\netstandard2.0\Molfar.CoinCap.deps.json
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\bin\Debug\netstandard2.0\Molfar.CoinCap.dll
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\bin\Debug\netstandard2.0\Molfar.CoinCap.pdb
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\bin\Debug\netstandard2.0\Molfar.Models.dll
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\bin\Debug\netstandard2.0\Molfar.Models.pdb
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\obj\Debug\netstandard2.0\Molfar.CoinCap.csprojResolveAssemblyReference.cache
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\obj\Debug\netstandard2.0\Molfar.CoinCap.csproj.CoreCompileInputs.cache
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\obj\Debug\netstandard2.0\Molfar.CoinCap.AssemblyInfoInputs.cache
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\obj\Debug\netstandard2.0\Molfar.CoinCap.AssemblyInfo.cs
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\obj\Debug\netstandard2.0\Molfar.CoinCap.csproj.CopyComplete
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\obj\Debug\netstandard2.0\Molfar.CoinCap.dll
+C:\dev\MI\Projects\Molfar\Modules\Molfar.CoinCap\obj\Debug\netstandard2.0\Molfar.CoinCap.pdb

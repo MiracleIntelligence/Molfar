@@ -1,10 +1,11 @@
-﻿using GalaSoft.MvvmLight.Ioc;
+﻿using Molfar.CoinCap;
 using Molfar.Console.Services;
 using Molfar.Core.Services;
 using Molfar.Models.Services;
 using Molfar.Notes;
 using SimpleInjector;
 using System.Text;
+
 namespace Molfar.Console
 {
     class Program
@@ -24,6 +25,7 @@ namespace Molfar.Console
 
             _molfar.Initialize(container);
             _molfar.Install<MolfarNotesInstaller>();
+            _molfar.Install<MolfarCoinCapInstaller>();
 
             while (_molfar.Active)
             {
