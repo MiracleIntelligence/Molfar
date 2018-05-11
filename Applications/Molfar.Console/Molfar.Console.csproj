@@ -15,8 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Molfar.Core\Molfar.Core.csproj" />
     <ProjectReference Include="..\..\Modules\Molfar.CoinCap\Molfar.CoinCap.csproj" />
+    <ProjectReference Include="..\..\Modules\Molfar.NEM\Molfar.NEM.csproj" />
     <ProjectReference Include="..\..\Modules\Molfar.Notes\Molfar.Notes.csproj" />
-    <ProjectReference Include="..\..\Molfar.NEM\Molfar.NEM.csproj" />
   </ItemGroup>
 
   <ItemGroup>
