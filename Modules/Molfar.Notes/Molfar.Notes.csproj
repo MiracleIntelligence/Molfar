@@ -13,7 +13,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Molfar.Core\Molfar.Core.csproj" />
     <ProjectReference Include="..\..\Core\Molfar.Models\Molfar.Models.csproj" />
-    <ProjectReference Include="..\Molfar.Models\Molfar.Models.csproj" />
   </ItemGroup>
 
 </Project>

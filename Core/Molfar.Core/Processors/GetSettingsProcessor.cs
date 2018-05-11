@@ -22,14 +22,14 @@ namespace Molfar.Core.Processors
             return !String.IsNullOrEmpty(arg1);
         }
 
-        public override Task<MolfarAnswer> ExcecuteCommand(string message)
+        public override Task<IMolfarAnswer> ExcecuteCommand(string message)
         {
             var parts = message.Split(' ');
             var arg1 = parts[1];
 
             var value = _settingsService.GetSetting(arg1);
 
-            return Task.FromResult(new MolfarAnswer($"{arg1} : {value}"));
+            return Task.FromResult(new MolfarAnswer($"{arg1} : {value}") as IMolfarAnswer);
         }
     }
 }

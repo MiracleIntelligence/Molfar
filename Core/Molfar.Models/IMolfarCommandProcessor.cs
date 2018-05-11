@@ -6,7 +6,7 @@ namespace Molfar.Core
     public abstract class MolfarCommandProcessor
     {
         public abstract bool CanExcecute(string message);
-        public abstract Task<MolfarAnswer> ExcecuteCommand(string message);        
+        public abstract Task<IMolfarAnswer> ExcecuteCommand(string message);        
        
     }
 }

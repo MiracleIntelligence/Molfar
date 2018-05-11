@@ -14,3 +14,7 @@ Core/Molfar.Models/bin/
 Applications/Molfar/bin/
 *.dll
 *.pdb
+Molfar.NEM/obj/
+Molfar.NEM/bin/
+Modules/Molfar.Notes/obj/
+Modules/Molfar.CoinCap/obj/

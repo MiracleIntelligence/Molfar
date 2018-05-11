@@ -11,17 +11,15 @@ namespace Molfar.Core
 {
     public class Molfar : IMolfar
     {
-        internal const string CMD_PREFIX = ".";
-        internal const string CMD_RUN_PREFIX = "..";
         internal const string CMD_LIST = "list";
 
         internal const string ANS_INIT = "Здоров!";
 
         public bool Active { get; set; } = true;
 
-        public event EventHandler<MolfarAnswer> Answered;
+        public event EventHandler<IMolfarAnswer> Answered;
 
-        public delegate Task<MolfarAnswer> MolfarCommand(string message);
+        public delegate Task<IMolfarAnswer> MolfarCommand(string message);
 
         #region
         private Dictionary<string, Type> _knownCommands = new Dictionary<string, Type>();
@@ -74,7 +72,7 @@ namespace Molfar.Core
                 {
                     var commandNode = nodes[0];
 
-                    if (commandNode == CMD_PREFIX + CMD_LIST)
+                    if (commandNode == MolfarConstants.CMD_PREFIX + CMD_LIST)
                     {
                         ShowListOfCommands();
                         return;
@@ -140,12 +138,12 @@ namespace Molfar.Core
 
         private bool IsCommand(string str)
         {
-            return !String.IsNullOrEmpty(str) && str.Length > 1 && str.StartsWith(CMD_PREFIX);
+            return !String.IsNullOrEmpty(str) && str.Length > 1 && str.StartsWith(MolfarConstants.CMD_PREFIX);
         }
 
         private bool IsRunCommand(string str)
         {
-            return !String.IsNullOrEmpty(str) && str.StartsWith(CMD_RUN_PREFIX);
+            return !String.IsNullOrEmpty(str) && str.StartsWith(MolfarConstants.CMD_RUN_PREFIX);
         }
 
         private void SendAnswer(string message)
@@ -153,7 +151,7 @@ namespace Molfar.Core
             Answered?.Invoke(this, new MolfarAnswer(message));
         }
 
-        private void SendAnswer(MolfarAnswer answer)
+        private void SendAnswer(IMolfarAnswer answer)
         {
             Answered?.Invoke(this, answer);
         }

@@ -1,5 +1,7 @@
-﻿using Molfar.Core.Services;
+﻿using Molfar.CoinCap;
+using Molfar.Core.Services;
 using Molfar.Models.Services;
+using Molfar.NEM;
 using Molfar.Notes;
 using SimpleInjector;
 using System;
@@ -28,11 +30,16 @@ namespace Molfar
 
             _molfar.Initialize(container);
             _molfar.Install<MolfarNotesInstaller>();
+            _molfar.Install<MolfarCoinCapInstaller>();
+            _molfar.Install<NemInstaller>();
         }
 
-        private async void MolfarAnswered(object sender, Core.Models.MolfarAnswer e)
+        private async void MolfarAnswered(object sender, Core.Models.IMolfarAnswer e)
         {
-            await AddToConsole(e.Message);
+            foreach (var row in e.GetAnswer())
+            {
+                await AddToConsole(row);
+            }
         }
 
         public async void CommandEntryCompleted(object sender, EventArgs e)

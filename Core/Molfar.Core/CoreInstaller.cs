@@ -14,7 +14,7 @@ namespace Molfar.Core
         {
             RegisterCommandProcessor<TalkingProcessor>(CMD_ANY_KEY);
             RegisterCommandProcessor<GetSettingsProcessor>(CMD_GET_SETTINGS_KEY);
-            RegisterCommandProcessor<SaveSettingsProcessor>(CMD_SET_SETTINGS_KEY);
+            RegisterCommandProcessor<SetSettingsProcessor>(CMD_SET_SETTINGS_KEY);
             RegisterCommandProcessor<HelpProcessor>(CMD_HELP_SETTINGS_KEY);
         }
     }

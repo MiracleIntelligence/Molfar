@@ -26,7 +26,7 @@ namespace Molfar.CoinCap
             return result;
         }
 
-        public override async Task<MolfarAnswer> ExcecuteCommand(string message)
+        public override async Task<IMolfarAnswer> ExcecuteCommand(string message)
         {
             var parts = message.Split(' ');
             var cur1 = parts[1];

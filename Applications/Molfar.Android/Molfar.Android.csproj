@@ -86,13 +86,13 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Molfar\Molfar.csproj">
-      <Project>{99901A2C-6C95-4671-8667-AF3DC5779BCB}</Project>
-      <Name>Molfar</Name>
-    </ProjectReference>
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\Molfar\Molfar.csproj">
+      <Project>{3454e605-05c8-4aa1-ada0-a7c2b973794b}</Project>
+      <Name>Molfar</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

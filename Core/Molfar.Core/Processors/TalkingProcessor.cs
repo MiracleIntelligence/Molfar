@@ -10,9 +10,9 @@ namespace Molfar.Core.Processors
             return true;
         }
 
-        public override Task<MolfarAnswer> ExcecuteCommand(string message)
+        public override Task<IMolfarAnswer> ExcecuteCommand(string message)
         {
-            return Task.FromResult(new MolfarAnswer($"UNKNOWN COMMAND: {message}"));
+            return Task.FromResult(new MolfarAnswer($"UNKNOWN COMMAND: {message}") as IMolfarAnswer);
         }
     }
 }
