@@ -3,6 +3,7 @@ using Molfar.Core.Services;
 using Molfar.Models.Services;
 using Molfar.NEM;
 using Molfar.Notes;
+using Molfar.Spoco;
 using SimpleInjector;
 using System;
 using System.Text;
@@ -13,8 +14,8 @@ namespace Molfar
 {
     public partial class MainPage : ContentPage
     {
-        Molfar.Core.Molfar _molfar;
-        StringBuilder _sbConsole = new StringBuilder();
+        private Molfar.Core.Molfar _molfar;
+        private StringBuilder _sbConsole = new StringBuilder();
         public MainPage()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace Molfar
             _molfar.Install<MolfarNotesInstaller>();
             _molfar.Install<MolfarCoinCapInstaller>();
             _molfar.Install<NemInstaller>();
+            _molfar.Install<MolfarSpocoInstaller>();
         }
 
         private async void MolfarAnswered(object sender, Core.Models.IMolfarAnswer e)

@@ -13,6 +13,7 @@
     <ProjectReference Include="..\..\Modules\Molfar.CoinCap\Molfar.CoinCap.csproj" />
     <ProjectReference Include="..\..\Modules\Molfar.NEM\Molfar.NEM.csproj" />
     <ProjectReference Include="..\..\Modules\Molfar.Notes\Molfar.Notes.csproj" />
+    <ProjectReference Include="..\..\Molfar.Spoco\Molfar.Spoco.csproj" />
   </ItemGroup>
 
   <ItemGroup>

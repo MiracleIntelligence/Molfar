@@ -10,6 +10,11 @@ namespace Molfar.Core.Models
             _rows = new List<string>();
         }
 
+        public MolfarMultirowAnswer(IEnumerable<string> rows)
+        {
+            _rows = new List<string>(rows);
+        }
+
         public IEnumerable<string> GetAnswer()
         {
             return new List<string>(_rows);

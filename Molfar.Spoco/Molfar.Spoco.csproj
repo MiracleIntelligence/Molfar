@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="elspoco_Runtime\**" />
+    <EmbeddedResource Remove="elspoco_Runtime\**" />
+    <None Remove="elspoco_Runtime\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommonServiceLocator" Version="2.0.4" />
+    <PackageReference Include="Microsoft.Azure.Mobile.Client" Version="4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Molfar.Core\Molfar.Core.csproj" />
+    <ProjectReference Include="..\Core\Molfar.Models\Molfar.Models.csproj" />
+  </ItemGroup>
+
+</Project>

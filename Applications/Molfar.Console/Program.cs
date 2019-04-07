@@ -4,15 +4,17 @@ using Molfar.Core.Services;
 using Molfar.Models.Services;
 using Molfar.NEM;
 using Molfar.Notes;
+using Molfar.Spoco;
 using SimpleInjector;
 using System.Text;
 
 namespace Molfar.Console
 {
-    class Program
+    internal class Program
     {
-        static Core.Molfar _molfar;
-        static void Main(string[] args)
+        private static Core.Molfar _molfar;
+
+        private static void Main(string[] args)
         {
             System.Console.OutputEncoding = Encoding.UTF8;
 
@@ -28,6 +30,7 @@ namespace Molfar.Console
             _molfar.Install<MolfarNotesInstaller>();
             _molfar.Install<MolfarCoinCapInstaller>();
             _molfar.Install<NemInstaller>();
+            _molfar.Install<MolfarSpocoInstaller>();
 
             while (_molfar.Active)
             {
