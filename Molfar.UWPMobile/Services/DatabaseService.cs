@@ -1,11 +1,12 @@
-﻿using SQLite;
+﻿using Molfar.Core.Services;
+using SQLite;
 using System;
 using System.IO;
 
 
-namespace Molfar.Core.Services
+namespace Molfar.UWPMobile.Services
 {
-    public class DatabaseService
+    public class DatabaseService : IDatabaseService
     {
         private const string DB_PATH = "MOLFAR_DB";
 
@@ -21,7 +22,7 @@ namespace Molfar.Core.Services
             try
             {
                 string dbPath = Path.Combine(
-           Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+           Windows.Storage.ApplicationData.Current.LocalFolder.Path,
            DB_PATH);
 
 
@@ -34,8 +35,6 @@ namespace Molfar.Core.Services
             {
                 return null;
             }
-
-
         }
     }
 }

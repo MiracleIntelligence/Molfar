@@ -23,7 +23,7 @@ namespace Molfar
             Container container = new Container();
 
             container.Register<ISettingsService, SettingsService>();
-            container.Register<DatabaseService>();
+            container.Register<IDatabaseService, DatabaseService>();
 
 
             _molfar = new Core.Molfar();
@@ -61,6 +61,5 @@ namespace Molfar
             await Task.Delay(50);
             await ScrollViewMain.ScrollToAsync(0, ScrollViewMain.Height, true);
         }
-
     }
 }

@@ -21,7 +21,7 @@ namespace Molfar.Console
             Container container = new Container();
 
             container.Register<ISettingsService, SettingsService>();
-            container.Register<DatabaseService>();
+            container.Register<IDatabaseService, DatabaseService>();
 
             _molfar = new Core.Molfar();
             _molfar.Answered += OnMolfarAnswered;

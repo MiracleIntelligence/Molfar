@@ -13,6 +13,7 @@
     <ProjectReference Include="..\..\Modules\Molfar.CoinCap\Molfar.CoinCap.csproj" />
     <ProjectReference Include="..\..\Modules\Molfar.NEM\Molfar.NEM.csproj" />
     <ProjectReference Include="..\..\Modules\Molfar.Notes\Molfar.Notes.csproj" />
+    <ProjectReference Include="..\..\Modules\Molfar.Storage\Molfar.Storage.csproj" />
     <ProjectReference Include="..\..\Molfar.Spoco\Molfar.Spoco.csproj" />
   </ItemGroup>
 
@@ -23,5 +24,14 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
   </ItemGroup>
 </Project>
