@@ -1,12 +1,12 @@
-﻿using Molfar.CoinCap;
-using Molfar.Console.Services;
+﻿using Molfar.Console.Services;
+using Molfar.Core;
 using Molfar.Core.Services;
 using Molfar.Models.Services;
-using Molfar.NEM;
 using Molfar.Notes;
-using Molfar.RadioDay;
-using Molfar.Spoco;
+
 using SimpleInjector;
+
+using System;
 using System.Text;
 
 namespace Molfar.Console
@@ -29,17 +29,14 @@ namespace Molfar.Console
 
             _molfar.Initialize(container);
             _molfar.Install<MolfarNotesInstaller>();
-            _molfar.Install<MolfarCoinCapInstaller>();
-            _molfar.Install<NemInstaller>();
-            _molfar.Install<MolfarSpocoInstaller>();
-            _molfar.Install<MolfarRadioDayInstaller>();
+
+            _molfar.SendMessage($".get {MolfarConstants.KEY_LAST_VISIT}");
+            _molfar.SendMessage($".set {MolfarConstants.KEY_LAST_VISIT} {DateTime.Now.ToString("dd MMM yyyy HH:mm")}");
 
             while (_molfar.Active)
             {
                 _molfar.SendMessage(System.Console.ReadLine());
             }
-            //System.Console.WriteLine("Hello World!");
-            //System.Console.ReadKey(true);
         }
 
         private static void OnMolfarAnswered(object sender, Core.Models.IMolfarAnswer e)
