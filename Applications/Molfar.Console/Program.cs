@@ -4,6 +4,7 @@ using Molfar.Core.Services;
 using Molfar.Models.Services;
 using Molfar.NEM;
 using Molfar.Notes;
+using Molfar.RadioDay;
 using Molfar.Spoco;
 using SimpleInjector;
 using System.Text;
@@ -31,6 +32,7 @@ namespace Molfar.Console
             _molfar.Install<MolfarCoinCapInstaller>();
             _molfar.Install<NemInstaller>();
             _molfar.Install<MolfarSpocoInstaller>();
+            _molfar.Install<MolfarRadioDayInstaller>();
 
             while (_molfar.Active)
             {

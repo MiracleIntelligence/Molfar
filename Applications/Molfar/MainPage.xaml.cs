@@ -3,6 +3,7 @@ using Molfar.Core.Services;
 using Molfar.Models.Services;
 using Molfar.NEM;
 using Molfar.Notes;
+using Molfar.RadioDay;
 using Molfar.Spoco;
 using SimpleInjector;
 using System;
@@ -31,9 +32,10 @@ namespace Molfar
 
             _molfar.Initialize(container);
             _molfar.Install<MolfarNotesInstaller>();
-            _molfar.Install<MolfarCoinCapInstaller>();
-            _molfar.Install<NemInstaller>();
-            _molfar.Install<MolfarSpocoInstaller>();
+            //_molfar.Install<MolfarCoinCapInstaller>();
+            //_molfar.Install<NemInstaller>();
+            //_molfar.Install<MolfarSpocoInstaller>();
+            _molfar.Install<MolfarRadioDayInstaller>();
         }
 
         private async void MolfarAnswered(object sender, Core.Models.IMolfarAnswer e)
