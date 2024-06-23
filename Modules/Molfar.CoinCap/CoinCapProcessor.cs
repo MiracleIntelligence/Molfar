@@ -1,6 +1,7 @@
-﻿using MolfarCoinCap.Models;
-using Molfar.Core;
+﻿using Molfar.Core;
 using Molfar.Core.Models;
+using MolfarCoinCap.Models;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.Serialization.Json;
@@ -26,10 +27,9 @@ namespace Molfar.CoinCap
             return result;
         }
 
-        public override async Task<IMolfarAnswer> ExcecuteCommand(string message)
+        public override async Task<IMolfarAnswer> ExcecuteCommand(List<string> nodes)
         {
-            var parts = message.Split(' ');
-            var cur1 = parts[1];
+            var cur1 = nodes[1];
             var answer = await GetRate(cur1);
             return new MolfarAnswer(answer);
         }

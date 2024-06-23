@@ -1,11 +1,11 @@
 ﻿using Molfar.Core.Models;
-using Molfar.Core.Services;
 using Molfar.Models;
 using Molfar.Models.Services;
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Molfar.Core
 {
@@ -19,13 +19,12 @@ namespace Molfar.Core
 
         public event EventHandler<IMolfarAnswer> Answered;
 
-        public delegate Task<IMolfarAnswer> MolfarCommand(string message);
 
         #region
         private Dictionary<string, Type> _knownCommands = new Dictionary<string, Type>();
         #endregion
 
-        Container _defaultContainer;
+        private Container _defaultContainer;
 
         public void Initialize(Container container)
         {
@@ -50,25 +49,37 @@ namespace Molfar.Core
 
         public bool SendMessage(string message)
         {
-            ProcessMessage(message);
+            var command = new MolfarCommand(message);
+            ProcessCommand(command);
 
             return true;
         }
 
-        private async void ProcessMessage(string message)
+        public bool SendCommand(IMolfarCommand command)
         {
-            if (String.IsNullOrEmpty(message))
+            ProcessCommand(command);
+
+            return true;
+        }
+
+        private async void ProcessCommand(IMolfarCommand command)
+        {
+            var message = command.Message;
+            if (String.IsNullOrEmpty(command.Message))
             {
                 return;
             }
-
-            var nodes = message.Split(' ');
+            var nodes = Regex.Matches(message, "(?<= \").*?(?=\")|\\w+")
+                .Cast<Match>()
+                .Select(m => m.Value)
+                .ToList();
+            //var nodes = message.Split(' ');
 
             Type commandProcessorType;
 
             try
             {
-                if (nodes.Length > 0)
+                if (nodes.Count > 0)
                 {
                     var commandNode = nodes[0];
 
@@ -82,7 +93,7 @@ namespace Molfar.Core
                     {
                         var settingsService = _defaultContainer.GetInstance<ISettingsService>();
                         message = settingsService.GetSetting(commandNode.Substring(2));
-                        ProcessMessage(message);
+                        ProcessCommand(command);
 
                         return;
                     }
@@ -91,7 +102,7 @@ namespace Molfar.Core
 
                     if (IsCommand(commandNode))
                     {
-                        commandKey = commandNode.Substring(1);
+                        commandKey = commandNode.Substring(MolfarConstants.CMD_PREFIX.Length);
                     }
                     else
                     {
@@ -112,7 +123,7 @@ namespace Molfar.Core
 
                     if (processor.CanExcecute(message))
                     {
-                        var answer = await processor.ExcecuteCommand(message);
+                        var answer = await processor.ExcecuteCommand(nodes);
                         SendAnswer(answer);
                     }
                     else
@@ -131,7 +142,7 @@ namespace Molfar.Core
         {
             foreach (var item in _knownCommands)
             {
-                SendAnswer($".{item.Key}");
+                SendAnswer($"{MolfarConstants.CMD_PREFIX}{item.Key}");
             }
             return;
         }

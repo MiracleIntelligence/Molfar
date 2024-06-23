@@ -1,6 +1,7 @@
 ﻿using Molfar.Core.Models;
 using Molfar.Models.Services;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Molfar.Core.Processors
@@ -22,10 +23,9 @@ namespace Molfar.Core.Processors
             return !String.IsNullOrEmpty(arg1);
         }
 
-        public override Task<IMolfarAnswer> ExcecuteCommand(string message)
+        public override Task<IMolfarAnswer> ExcecuteCommand(List<string> nodes)
         {
-            var parts = message.Split(' ');
-            var arg1 = parts[1];
+            var arg1 = nodes[1];
 
             var value = _settingsService.GetSetting(arg1);
 

@@ -23,3 +23,10 @@ Molfar.Spoco/bin/
 Modules/Molfar.NEM/obj/
 Modules/Molfar.CoinCap/bin/
 Modules/
+Modules/Molfar.CoinCap/obj/
+Modules/Molfar.CoinCap/bin/
+Modules/Molfar.NEM/obj/
+Modules/Molfar.NEM/bin/
+Modules/Molfar.Notes/obj/
+Modules/Molfar.Notes/bin/
+/Modules/Molfar.Notes/obj/Debug/netstandard2.0/Molfar.Notes.AssemblyInfo.cs

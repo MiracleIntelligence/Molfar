@@ -4,10 +4,12 @@ using Molfar.Models.Services;
 using Molfar.NEM;
 using Molfar.Notes;
 using Molfar.Spoco;
+using Molfar.Weeter;
 using SimpleInjector;
 using System;
 using System.Text;
 using System.Threading.Tasks;
+using Weeter.Core;
 using Xamarin.Forms;
 
 namespace Molfar
@@ -24,6 +26,7 @@ namespace Molfar
 
             container.Register<ISettingsService, SettingsService>();
             container.Register<DatabaseService>();
+            container.Register<WeeterAppService>(Lifestyle.Singleton);
 
 
             _molfar = new Core.Molfar();
@@ -34,13 +37,14 @@ namespace Molfar
             _molfar.Install<MolfarCoinCapInstaller>();
             _molfar.Install<NemInstaller>();
             _molfar.Install<MolfarSpocoInstaller>();
+            _molfar.Install<MolfarWeeterInstaller>();
         }
 
         private async void MolfarAnswered(object sender, Core.Models.IMolfarAnswer e)
         {
             foreach (var row in e.GetAnswer())
             {
-                await AddToConsole(row);
+                await AddToConsole($"<< {row}");
             }
         }
 
@@ -48,7 +52,7 @@ namespace Molfar
         {
             var newText = EntryCommand.Text;
             EntryCommand.Text = String.Empty;
-            await AddToConsole(newText);
+            await AddToConsole($">> {newText}");
             _molfar.SendMessage(newText);
 
         }
