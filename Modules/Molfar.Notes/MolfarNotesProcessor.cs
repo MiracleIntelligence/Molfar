@@ -1,9 +1,9 @@
-﻿using CommonServiceLocator;
-using Molfar.Core;
+﻿using Molfar.Core;
 using Molfar.Core.Models;
 using Molfar.Core.Services;
 using Molfar.Notes.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Molfar.Notes
@@ -26,17 +26,15 @@ namespace Molfar.Notes
             return true;
         }
 
-        public override Task<IMolfarAnswer> ExcecuteCommand(string message)
+        public override Task<IMolfarAnswer> ExcecuteCommand(List<string> nodes)
         {
-            var nodes = message.Split(' ');
-
-            if (nodes.Length > 1)
+            if (nodes.Count > 1)
             {
                 switch (nodes[1])
                 {
                     case PARAM_RANDOM: return GetRandomNote();
                     case PARAM_AT: return GetNote(Int32.Parse(nodes[2]));
-                    case PARAM_SAVE: return SaveNote(message);
+                    case PARAM_SAVE: return SaveNote(nodes);
                     default: return GetAllNotes();
                 }
             }
@@ -46,13 +44,12 @@ namespace Molfar.Notes
             }
         }
 
-        private Task<IMolfarAnswer> SaveNote(string message)
+        private Task<IMolfarAnswer> SaveNote(List<string> nodes)
         {
-            var parts = message.Split(' ');
-            var arg1 = parts[1];
-            var arg2 = parts[2];
-            var arg3 = parts[3];
-            var str = message.Substring(message.IndexOf(arg3));
+            var arg1 = nodes[1];
+            var arg2 = nodes[2];
+            var arg3 = nodes[3];
+            var str = nodes[4];
 
 
             var answer = _databaseService.Connection.Insert(new Note { Title = arg2, Text = str });

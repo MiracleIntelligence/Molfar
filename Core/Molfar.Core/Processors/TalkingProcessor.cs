@@ -1,4 +1,5 @@
 ﻿using Molfar.Core.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Molfar.Core.Processors
@@ -10,7 +11,7 @@ namespace Molfar.Core.Processors
             return true;
         }
 
-        public override Task<IMolfarAnswer> ExcecuteCommand(string message)
+        public override Task<IMolfarAnswer> ExcecuteCommand(List<string> message)
         {
             return Task.FromResult(new MolfarAnswer($"UNKNOWN COMMAND: {message}") as IMolfarAnswer);
         }

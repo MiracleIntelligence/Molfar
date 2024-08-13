@@ -23,7 +23,6 @@ Molfar.Spoco/bin/
 Modules/Molfar.NEM/obj/
 Modules/Molfar.CoinCap/bin/
 Modules/
-<<<<<<< HEAD
 /Applications/Molfar.UWPMobile/bin
 /Applications/Molfar.UWPMobile/obj
 /Modules/Molfar.CoinCap/obj/Debug/netstandard2.0/Molfar.CoinCap.AssemblyInfo.cs
@@ -32,11 +31,9 @@ Modules/
 /Modules/Molfar.NEM/obj/Debug/netstandard2.0/Molfar.NEM.AssemblyInfoInputs.cache
 /Modules/Molfar.Notes/obj/Debug/netstandard2.0/Molfar.Notes.AssemblyInfo.cs
 /Modules/Molfar.Notes/obj/Debug/netstandard2.0/Molfar.Notes.AssemblyInfoInputs.cache
-=======
 Applications/Molfar.UWPMobile/obj/
 Molfar.UWPMobile/obj/
 Applications/Molfar.UWPMobile/bin/
 Molfar.UWPMobile/bin/
 Molfar.Storage1/obj/
->>>>>>> support-windows-mobile
 /Modules/Molfar.CoinCap/obj/Debug/netstandard2.0/Molfar.CoinCap.csproj.CopyComplete

@@ -2,7 +2,8 @@
 using Molfar.Core.Services;
 using Molfar.Models.Services;
 using Molfar.Notes;
-
+using Molfar.Spoco;
+using Molfar.Weeter;
 using SimpleInjector;
 
 using System;
@@ -44,7 +45,7 @@ namespace Molfar
         {
             foreach (var row in e.GetAnswer())
             {
-                await AddToConsole(row);
+                await AddToConsole($"<< {row}");
             }
         }
 
@@ -52,7 +53,7 @@ namespace Molfar
         {
             var newText = EntryCommand.Text;
             EntryCommand.Text = String.Empty;
-            await AddToConsole(newText);
+            await AddToConsole($">> {newText}");
             _molfar.SendMessage(newText);
 
         }

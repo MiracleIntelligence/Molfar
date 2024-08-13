@@ -37,17 +37,15 @@ namespace Molfar.Spoco
             return true;
         }
 
-        public override Task<IMolfarAnswer> ExcecuteCommand(string message)
+        public override Task<IMolfarAnswer> ExcecuteCommand(List<string> nodes)
         {
-            var nodes = message.Split(' ');
-
-            if (nodes.Length > 1)
+            if (nodes.Count > 1)
             {
                 switch (nodes[1])
                 {
                     case PARAM_RANDOM: return GetRandomNote();
                     case PARAM_AT: return GetNote(Int32.Parse(nodes[2]));
-                    case PARAM_SAVE: return SaveNote(message);
+                    case PARAM_SAVE: return SaveNote(nodes);
                     case PARAM_ALL: return GetNotes();
                     case PARAM_TODAY: return GetNotes(PARAM_TODAY);
                     case PARAM_HOUR: return GetNotes(PARAM_HOUR);
@@ -61,13 +59,12 @@ namespace Molfar.Spoco
             }
         }
 
-        private Task<IMolfarAnswer> SaveNote(string message)
+        private Task<IMolfarAnswer> SaveNote(List<string> nodes)
         {
-            var parts = message.Split(' ');
-            var arg1 = parts[1];
-            var arg2 = parts[2];
-            var arg3 = parts[3];
-            var str = message.Substring(message.IndexOf(arg3));
+            var arg1 = nodes[1];
+            var arg2 = nodes[2];
+            var arg3 = nodes[3];
+            var str = nodes[4];
 
 
             var answer = _databaseService.Connection.Insert(new TodoItem { Id = arg2, Text = str });

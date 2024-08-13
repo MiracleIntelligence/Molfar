@@ -9,6 +9,7 @@ namespace Molfar.Core
         internal const string CMD_GET_SETTINGS_KEY = "get";
         internal const string CMD_SET_SETTINGS_KEY = "set";
         internal const string CMD_HELP_SETTINGS_KEY = "help";
+        internal const string CMD_MOLFAR_KEY = "molfar";
 
         public override void Install()
         {

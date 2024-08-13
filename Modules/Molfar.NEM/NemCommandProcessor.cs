@@ -2,6 +2,7 @@
 using CSharp2nem.RequestClients;
 using Molfar.Core;
 using Molfar.Core.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Molfar.NEM
@@ -17,10 +18,9 @@ namespace Molfar.NEM
             return true;
         }
 
-        public override Task<IMolfarAnswer> ExcecuteCommand(string message)
+        public override Task<IMolfarAnswer> ExcecuteCommand(List<string> nodes)
         {
-            var nodes = message.Split(MolfarConstants.CMD_CHAR_SEPARATOR);
-            if (nodes.Length > 1)
+            if (nodes.Count > 1)
             {
                 switch (nodes[1])
                 {
