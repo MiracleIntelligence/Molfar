@@ -19,14 +19,14 @@ namespace Molfar.Spoco
         private const string PARAM_TODAY = "today";
         private const string PARAM_HOUR = "hour";
         private const string PARAM_ADD = "add";
-        private DatabaseService _databaseService;
+        private IDatabaseService _databaseService;
 
         public static MobileServiceClient MobileService =
     new MobileServiceClient(
     "https://elspoco.azurewebsites.net"
 );
 
-        public MolfarSpocoProcessor(DatabaseService databaseService)
+        public MolfarSpocoProcessor(IDatabaseService databaseService)
         {
             _databaseService = databaseService;
             _databaseService.Connection.CreateTable<TodoItem>();

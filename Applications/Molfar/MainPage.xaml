@@ -7,7 +7,7 @@
     <Grid Margin="5" BackgroundColor="Black">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ScrollView IsClippedToBounds="True"
                     x:Name="ScrollViewMain">
@@ -23,6 +23,7 @@
                    HorizontalTextAlignment="Start"/>
         </ScrollView>
         <Entry Grid.Row="1" 
+               MinimumHeightRequest="40"
                BackgroundColor="Black" 
                PlaceholderColor="LightBlue"
                TextColor="Yellow" 

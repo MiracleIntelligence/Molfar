@@ -10,5 +10,7 @@ namespace Molfar.Core
         public const string CMD_RUN_PREFIX = "..";
         public const string CMD_SEPARATOR = " ";
         public const char CMD_CHAR_SEPARATOR = ' ';
+
+        public const string KEY_LAST_VISIT = "visited";
     }
 }

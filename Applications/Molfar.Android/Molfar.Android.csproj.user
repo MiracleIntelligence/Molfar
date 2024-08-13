@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <SelectedDevice>Android_Accelerated_x86_Oreo</SelectedDevice>
-    <DefaultDevice>Android_Accelerated_x86_Oreo</DefaultDevice>
+    <SelectedDevice>pixel_2_pie_9_0_-_api_28</SelectedDevice>
+    <DefaultDevice>pixel_2_pie_9_0_-_api_28</DefaultDevice>
+    <SelectedPlatformGroup>Emulator</SelectedPlatformGroup>
+    <ActiveDebugProfile>Pixel 2 Pie 9.0 - API 28 %28Android 9.0 - API 28%29</ActiveDebugProfile>
   </PropertyGroup>
 </Project>

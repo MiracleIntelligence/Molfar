@@ -13,9 +13,9 @@ namespace Molfar.Notes
         private const string PARAM_RANDOM = "random";
         private const string PARAM_AT = "at";
         private const string PARAM_SAVE = "save";
-        DatabaseService _databaseService;
+        IDatabaseService _databaseService;
 
-        public MolfarNotesProcessor(DatabaseService databaseService)
+        public MolfarNotesProcessor(IDatabaseService databaseService)
         {
             _databaseService = databaseService;
             _databaseService.Connection.CreateTable<Note>();

@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="Molfar.UWPMobile.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Margin="5" Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer x:Name="ScrollViewMain">
+            <TextBlock Text="Molfar" 
+                   Grid.Row="0"
+                   Foreground="Green"
+                   VerticalAlignment="Bottom"
+                   FontSize="16"
+                   x:Name="LabelConsole"
+                   Margin="0,10"/>
+        </ScrollViewer>
+        <TextBox Grid.Row="1" 
+               Background="Black" 
+               Foreground="Yellow" 
+               x:Name="EntryCommand" 
+               PlaceholderText="write your command..." 
+               HorizontalAlignment="Stretch" 
+               KeyDown="EntryCommandKeyDown"/>
+
+    </Grid>
+</Page>

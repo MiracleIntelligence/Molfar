@@ -1,13 +1,14 @@
-﻿using Molfar.CoinCap;
+﻿using Molfar.Core;
 using Molfar.Core.Services;
 using Molfar.Models.Services;
-using Molfar.NEM;
 using Molfar.Notes;
-using Molfar.Spoco;
+
 using SimpleInjector;
+
 using System;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 
 namespace Molfar
@@ -23,7 +24,7 @@ namespace Molfar
             Container container = new Container();
 
             container.Register<ISettingsService, SettingsService>();
-            container.Register<DatabaseService>();
+            container.Register<IDatabaseService, DatabaseService>();
 
 
             _molfar = new Core.Molfar();
@@ -31,9 +32,12 @@ namespace Molfar
 
             _molfar.Initialize(container);
             _molfar.Install<MolfarNotesInstaller>();
-            _molfar.Install<MolfarCoinCapInstaller>();
-            _molfar.Install<NemInstaller>();
-            _molfar.Install<MolfarSpocoInstaller>();
+            //_molfar.Install<MolfarCoinCapInstaller>();
+            //_molfar.Install<NemInstaller>();
+            //_molfar.Install<MolfarSpocoInstaller>();
+
+            _molfar.SendMessage($".get {MolfarConstants.KEY_LAST_VISIT}");
+            _molfar.SendMessage($".set {MolfarConstants.KEY_LAST_VISIT} {DateTime.Now.ToString("dd MMM yyyy HH:mm")}");
         }
 
         private async void MolfarAnswered(object sender, Core.Models.IMolfarAnswer e)
@@ -61,6 +65,5 @@ namespace Molfar
             await Task.Delay(50);
             await ScrollViewMain.ScrollToAsync(0, ScrollViewMain.Height, true);
         }
-
     }
 }

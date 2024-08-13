@@ -31,7 +31,6 @@ namespace Molfar.Core
         {
             _defaultContainer = container;
             Install<CoreInstaller>();
-
             SendAnswer(ANS_INIT);
         }
 
